@@ -1,0 +1,11 @@
+OBS: ABBS være i gang for at dette programmet skal virke
+
+Usage : SysopAvail [OFF]
+
+SysopAvail
+
+Setter altså sysop availible, mens 
+
+SysopAvail OFF
+
+setter sysop not availible

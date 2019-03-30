@@ -1,0 +1,19 @@
+*NOTE* ABBS must be running (and installed) for AddMsg to work. *NOTE*
+
+Usage : Filename/A,Conf/A,Subject/A,TO/K,FROM/K,R=Reply/K/N,P=Private/S
+
+Filename <name>	(Required) Filename for textfile containing the message.
+
+Conf	 <name>	(Required) Conference name to store the message in
+
+Subject	 <subj> (Required) Subject of message. Must be enclosed in quotes if
+			the subject contains spaces
+
+TO	 <user>	Username to write too. (name must be enclosed in quotes)
+
+FROM	 <user>	Username who write this message. (name must be enclosed in quotes)
+
+Reply	 <msg#>	Message number to make this message a reply to
+
+Private		This keyword will make the message private if it can be made
+		private

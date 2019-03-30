@@ -1,0 +1,71 @@
+ABBS DoorsDoc 1/2-94
+
+For å sette opp doors på abbs, skal dere ha en directory som heter
+abbs:doors, og der skal det ligge 2 filer for hver node.
+
+NodexMenu(.raw/.ansi) er en tekst fil som skrives ut til brukere som skriver
+                open. (x = tallet på noden)
+
+NodexConfig, hvor x er tallet på noden. Setter opp hvilke dører som er
+             tilgjengelig på denne noden. Format et er :
+
+A       <Arexx/dør filnavn>   ; komentar
+^       ^
+type	filnavn
+
+Tillatte typer:
+A	- Arexx door
+P	- Paragon door
+S	- Shell door
+
+A'en sier at det er en Arexx dør. Skriver du en P der, så starter abbs den
+som en paragon dør, og S er shell dør. Det kan være spaces/tabs før A'en.
+Det må være minst en space/tab etter A'en, og filnavnet må være uten spaces
+eller tabs. Man kan ha en komentar etterpå hvis man vil.
+
+ABBS teller gjyldige linjer nedover når den skal finne door x.
+
+Dør 3 er altså den 3. linjen som er av formatet over. (Du kan ha rene
+komentar linjer mellom, de telles ikke).
+
+for node 1 blir filene derfor :
+
+abbs:doors/Node1Menu
+abbs:doors/Node1Config
+
+Dette er et eksempel på en nodexconfig fil. Den setter opp gitaris og days.
+----------------------- klipp ------------------
+A	abbs:Doors/Gitaris.ABBS		; Gitaris er door nr 1
+A	ABBS:Doors/Days/Days.ABBS	; Days er door nr 2
+P	abbs:doors/KSE/KSE101		; Kse (paragon door) er door nr 3
+S	abbs:Doors/XBJ/XBJ.script	; Black jack (shell door) er door nr 4
+----------------------- klipp ------------------
+
+Se Arexx doc'en for hvilke Arexx kommandoer som ABBS tilbyr.
+
+Når det gjelder shell doors, så startes via et shell script.
+Her er eksempelet på fila XBJ.script:
+
+------------------------ klipp --------------------
+cd doors:xbj			; forandrer Currentdir til riktig sted
+failat 2147483647		; max failat verdi
+stack 10000			; setter opp stack'en
+path sys:rexxc			; Sørger for at vi finner rx..
+; Denne linjen forandrer nodestatus til "Playing Black Jack". Trengs ikke.
+rx "Address 'ABBS node #`get Nodenr` port' 'SETSTATUSTEXT ''Playing Black Jack'''"
+xbj -u "`get fullname`"		; Starter selve door'en
+Endcli				; sørger for at shellet avsluttes. VIKTIG!!
+------------------------ klipp --------------------
+
+** VIKTIG ** Oppsettet av shell doors må sjekkes NØYE !!!! ** VIKTIG **
+
+Skjer den noe galt, så havner brukeren i et shell (likt det du får ved 
+"! exit"), og det er jo farlig for sikkerheten.
+
+Når det gjelder parametre, så ligger de som lokale variable. Følgende lokale
+variable er tilgjengelige:
+
+FullName	- Gir logonnavnet
+NodeNr		- Gir nodenummeret som brukeren er inne på.
+
+Bruk C:get kommandoen (som vist i eksemplet over) til å hente ut parameterene.

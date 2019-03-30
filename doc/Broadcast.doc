@@ -1,0 +1,13 @@
+OBS: ABBS være i gang for at dette programmet skal virke
+
+Usage : Broadcast <nodenr> <text>
+
+<nodenr> er nodenummeret du vil sende melding til.
+Er dette nummeret 0, går det til alle noder.
+
+<text> er teksten som skal sendes. (kan inneholde space)
+obs: maks 80 tegn langt
+
+Broadcast 0 Hei dette er sysop
+
+sender altså en node melding til alle brukere som er inne på basen.

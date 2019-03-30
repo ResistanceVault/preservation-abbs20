@@ -1,0 +1,247 @@
+
+              #####  #      ######  #      ######  #       ###     #
+             #########     ######  ###    ######  ###     # #######
+            ##     ###    ##   #  # ##   ##   #  # ##    ##   ####
+           ##  ## # ##   #    #  #  #   #    #  #  #      ###
+           #  # ##  ##      ## ##  #       ## ##  #         ####
+           #    #   ##      ## ## #        ## ## #            ####
+            #  #    ##      #  ### #       #  ### #      ###    ###
+              ########         ##   ##        ##   ##   ######   #
+             #      ##     ####     #     ####     #   #    #####
+            #### #  ###   #  ####  #     #  ####  #    #      ##
+           #  ###    #   #    #####     #    #####      #     #
+                                                       ##
+
+                        Amiga Bulletin Borad System
+                        (C) 1991, Geir Inge Høsteng
+
+			  ConfigBBS dokumentasjon
+			===========================
+
+
+ConfigBBS er et programm som brukes til å konfigurere ABBS.
+
+ConfigBBS krever at ABBS kjører, siden ConfigBBS bruker endel rutiner som
+ligger i ABBS.
+
+For å konfigurere ABBS bare starter man configBBS, og fyller ut alle
+gadget'ene, Velger det man vil i menyen, og velger Save i menyen. og så er man
+ferdig.
+(hvis ikke ConfigBBS raporterer noen feil i tittelbar'en da ...).
+
+Noen av gadget'ene/menyene er allerede utfyllte med forslag.
+
+Hvis du allerede har konfigurert basen, og kjører ConfigBBS, vil du kunne
+forandre noen av valgene. Ikke alle frandringene vil merkes før du avslutter,
+og starter ABBS igjen.
+
+Forklaring av de forskjellige gadgetene
+***************************************
+
+Sysop info:
++++++++++++
+
+Name
+====
+Dette er sysop's navn. Det må være et navn i nøyaktig 2 deler, separert
+av et mellomrom (space).
+
+Password
+========
+Dette er sysop's lokale passord. Ved første konfigurering av basen blir det
+også syops vanelige passord OBS. Alle passord i ABBS er case sensitive, dvs
+at Foo og foo ikke er like. (Store og små bokstaver er forskjellige).
+Det er lurt å velge noe som ikke er så veldig opplagt her.
+Mellomrom er ikke tillatt i passord
+
+Hvis du velger et tomt passord når du kjører configBBS etter å ha configurert
+ABBS, vil F2 og F3 login ikke spørre etter passord.
+
+Address
+=======
+Dette er sysop's adresse. Dette er bare en ren tekststring som ABBS aldri
+tolker/bruker.
+
+Postalcode
+==========
+Dette er sysop's post kode. Bare en ren tekststring som ABBS aldri tolker.
+
+Home phone
+==========
+Dette er sysop's telefonnummer hjem. Bare en ren tekststring som ABBS aldri
+tolker.
+
+Work phone
+==========
+Dette er sysop's telefonnummer på jobb. Bare en ren tekststring som ABBS
+aldri tolker. Har du ikke noe jobb telefonnummer, svar bare '-' eller noe
+slikt.
+
+Board name
+==========
+Dette er navnet på basen. For øyeblikket brukes dette kun til navnet på
+grab filene.
+
+News conferance name
+====================
+Dette er en obligatorisk nyhetskonferanse, hvor alle kan lese, mens bare
+sysop kan skrive her.
+
+POST conferance name
+====================
+Dette er en obligatorisk post konferanse. Her kan alle skrive, men bare
+private meldinger. Ingen kan lese private meldinger untatt sender, mottager
+og Sysop.
+
+UserInfo conferance name
+========================
+Konferanse for resyme'er. Ingen skal kunne skrive her, untatt ved bruk av
+main komandoen edit.
+
+FileInfo conferance name
+========================
+Konferanse for Filinfo. Ingen skal kunne skrive her, untatt ved upload.
+
+Time limit
+==========
+Dette er den tiden nyregistrerte brukere får som maks antall minutter pr. dag.
+0 betyr ingen tidsbegrensning.
+
+File limit
+==========
+Dette er den tiden nyregistrerte brukere får som maks antall minutter i
+filmenyen pr. dag. 0 betyr ingen tidsbegrensning.
+(Det er time limit som er den viktigste, dvs, selv om man har lengre filtid
+enn vanelig tid, blir man kastet ut når den vanelige tiden er oppbrukt)
+
+Max lines in msg's
+==================
+Bestemmer hvor mange linjer editorene skal ha som maks. Minne til disse
+allokerers ved oppstart. Mange linjer gir mulighet for store meldinger,
+men tar mere minne en få linjer. Det allokeres en slik buffer for hver node.
+
+Sleep time
+==========
+Dette er antall minutter som ABBS skal vente på input før den antar at
+brukeren har sovent, og log'er han av basen.
+
+KByte Ratio
+===========
+KB ratio for Upload/Download. Gjelder ikke før du har slått den på med on/off
+gadgeten til høyre for denne.
+
+File Ratio
+==========
+File ratio for Upload/Download. Gjelder ikke før du har slått den på med on/off
+gadgeten til høyre for denne.
+
+Min UL Space
+============
+Antall K som må være ledig på upload partisjonen for å tillate en upload.
+0 slår av denne testen.
+
+File Dirs
+=========
+Når denne er valgt er det fil directory's som vises i requesteren
+
+Conferences
+===========
+Når denne er valgt er det konferanser som vises i requesteren
+
+Order
+=====
+Brukes til å forandre rekkefølgen på konferansene/fildirene
+
+Scan
+====
+Setter maks scan for konferanser, dvs er denne verdien 50, så vil en person
+som join'er denne for første gang bare få de siste 50 meldingene
+
+Bits
+====
+Lar deg editere konferanse bit'ene. (ikke på news,post,userinfo og fileinfo
+konferansene)
+
+Up
+==
+Minker order med en for denne konferansen
+
+Down
+====
+Øker order med en for denne konferansen
+
+Sliedebar'en
+============
+Lar deg "scrolle" vinduet.
+
+Liten pil opp
+=============
+Scroll'er listen med navn oppover
+
+Liten pil ned
+=============
+Scroll'er listen med navn nedover
+
+I Menyen:
+*********
+
+Load config
+===========
+Denne henter inn oppsette som sist ble lagret.
+
+Save config
+===========
+Denne sjekker input'en, og lagrer de nødvendige config filene.
+
+Cancel
+======
+Avbryter ConfigBBS uten å lagre noe som helst.
+
+Features:
++++++++++
+
+Interlace
+=========
+Når denne er aktivisert vil ABBS skjermen åpnes i interlace mode, og den vil
+vil være dobbelt så høy.
+
+8 Colors
+========
+Når denne er aktivisert Åpner skjermen og alle nodene med 8 farver. Dette
+tar endel mere chip ram en 2 farver, og går tregere, men nå vil alle ansi
+farver fungere lokalt også.
+
+
+Charset
+=======
+Dette er det tegnsette nye brukere for som default. For øyeblikket kan det
+være en av "ISO", "IBM" eller "IBN"
+
+Allow TmpSysop
+==============
+Velger om Amiga-T har noen virkning eller ikke.
+
+Use ASL
+=======
+Velger om ABBS skal bruke ASL.library eller ikke (har du ikke ASL vil ikke
+abbs prøve å bruke det uansett, og dette valget har følgelig ingen virkning.
+ASL.library er en del av 2.0 versjonen av Amiga's OS.
+
+
+New users May:
+++++++++++++++
+
+Download
+========
+Når denne gadget'en er aktivisert vil ny-registrerte brukere kunne hente ned
+filer uten at sysop må gi dem access til dette først.
+
+Upload
+======
+Når denne gadget'en er aktivisert vil ny-registrerte brukere kunne legge opp
+filer uten at sysop må gi dem access til dette først.
+
+
+Hvis du vil slette oppsettet og starte på nytt, slett alle filene i 
+abbs:conferences/ og slett filene userfile, userfile.index, userfile.nrindex
+og configfile i abbs:config/

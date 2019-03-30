@@ -1,0 +1,62 @@
+*NOTE* ABBS must be running (and installed) for AddFile to work. *NOTE*
+
+Usage : FILE/A,AS/A,DIR/K,P=Private/K,C=Conf/K,I=Info/K,FREE/S,MOVE/S,
+				FROM/K,NOCOPY/S,DESC/A/F
+
+File	<name>	(Required) Name of source files(s). Patterns allowed.
+
+as	<name>	(Required) name to use in abbs (in lists etc). Note, If
+		you use patterns in the source filename, this name will
+		not be used, instead the source filename is used.
+		If so, this name is not used, but still, you need to
+		type something.
+
+DIR	<name>	Name of directory to install file in.
+
+PRIVATE	<username> Make the file private to a spesific user
+		Name must be enclosed in quotes. eg "foo bar"
+
+CONF	<confname> Make the file private to a spesific conference
+
+INFO	<name>	Text file to install as a file info for this file.
+		Note. If source is several files, all files will get
+		the same fileinfo message (different copies though)
+
+FREE	Install this file as a free download
+
+MOVE	move the file (that is, delete the source after copy)
+
+FROM	Usernr who uploaded the file
+
+NOCOPY	If this option is selected Addfile will not check if the
+		file beeing installed resides in the correct place, nor will
+		addfile copy it. Hence, MOVE will have no effect when NOCOPY
+		is active.
+
+DESC	<description> (Required) The file(s) description.
+
+Examples:
+
+1) AddFile dh0:download/#? foo DIR upload FREE "New files"
+
+	Will install all files in dh0:download in directory upload using
+	their original names.
+
+2) AddFile df0:newfile Superfile.lha DIR text "the new text file"
+
+	Will install the file df0:newfile as Superfile.lha in directory
+	text with comment "the new text file"
+
+3) AddFile ram:ToGeirInge.lha ToYou.lha Private "Geir Inge" "Here it is!"
+
+	Will install ram:ToGeirInge.lha private to user "Geir Inge" as
+	ToYou.lha.
+
+4) To get really powerfull, you can use the c:list command.
+eg:
+
+List df0:#?.lha lformat "Addfile df0:%n %n FREE %c" >ram:script
+execute ram:script
+
+will add all lha files on drive df0: as free downloads, using their
+filecomment as comment!!!

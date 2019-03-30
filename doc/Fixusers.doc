@@ -1,0 +1,18 @@
+
+   Rebuilds the files "abbs:config/userfile.index" and
+"abbs:config/userfile.nrindex" from the "abbs:config/userfile"
+Also updates the "abbs:config/configfile" a little bit.
+
+Use this to fix problems with bad index files. (Usually noticed
+when messages get other authors or receivers etc.
+
+It should be safe to use, but, since it's not testet all that much
+please backup the files listed above just in case.
+
+Be warned. If PUS have been used on the userfiles, checkusers will report
+errors, EVEN IF THE FILES ARE OK!!!!
+(This happens when Users != Maximum users).
+
+As always, this is beta sw. Use with care. Hope it will help.
+
+Geir Inge Høsteng.

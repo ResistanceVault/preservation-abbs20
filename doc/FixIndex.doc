@@ -1,0 +1,33 @@
+*NOTE*
+
+ABBS must not be running. Running FixIndex when ABBS is running has
+no effect.
+
+*NOTE*
+
+Template: CHECK/S,KILLHIGH/S,FIXDUPLICATESNR/S,FIXDUPLICATENAMES/S
+Usage:   [CHECK] [KILLHIGH] [FIXDUPLICATESNR]	[FIXDUPLICATENAMES]
+
+[CHECK] is a NOP.
+
+[KILLHIGH] Renames the user with to high a usernumber to "KILL ME_<nr>".
+	This user should be killed imidiatly from ABBS.
+
+[FIXDUPLICATESNR] Tries to fix duplicate usernumbers.
+
+[FIXDUPLICATENAMES] Tries to fix duplicate names. Renames the second
+	user with the same name to "KILL ME_<nr>".	This user should be killed..
+
+Rebuilds the userfile.index and userfile.nrindex from the userfile,
+and also updates the "ABBS:config/configfile" a little bit.
+
+Use this to fix problems with bad index files. (Usually noticed
+when messages get other authors or receivers etc.
+
+It should be safe to use, but, since it's not testet all that much
+please backup the files listed above just in case.
+
+
+FixIndex v2.00 is for ABBS v2.x only!
+
+Jan Erik Olausen

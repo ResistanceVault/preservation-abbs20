@@ -1,0 +1,10 @@
+
+string = EXPERT(n)       - retur av ekspertnivå til innlogget bruker på
+                           node n
+time = LOGONTIME(n)      - Når bruker på node n logget inn
+bool = ANSITE       - om bruker på node n har satt opp ANSI terminal
+                           eller ikke
+
++ kommandoer som returnerer andre deler av brukerprofilen. Protokoll,
+pakkeformat, linjelengde, Sigop/Sysop status, raw files etc.
+

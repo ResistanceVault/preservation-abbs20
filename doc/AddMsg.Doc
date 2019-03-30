@@ -1,0 +1,22 @@
+OBS: ABBS være i gang for at dette programmet skal virke
+
+Usage : AddMsg <filename> <konf name> <subject>
+
+Obs. Håndterer ikke space i filnavnet.
+
+<filename>  er amiga dos filnavnet på tekst filen du vil legge inn som en
+	    melding.
+
+<konf name> er konferanse navnet du vil legge inn meldingen i
+
+<subject>   er den teksten du vil ha som subject. (her kan du ha med space).
+
+Alle meldinger laget med AddMsg vil få avsender Sysop, og være til ALL.
+
+eks:
+
+AddMsg ram:readme.txt news Viktig nyhet
+
+Legger inn filen "ram:readme.txt" som en melding til alle fra sysop i
+konferansen news med subject "Viktig nyhet"
+

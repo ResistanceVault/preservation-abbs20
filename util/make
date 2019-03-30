@@ -1,0 +1,9 @@
+ass.arg ConfigBBS
+ass.arg ConfigNode
+ass.arg AddFile
+ass.arg AddMsg
+ass.arg AddUsers
+ass.arg check
+;ass.arg DLratio
+ass.arg Broadcast
+ass.arg SysopAvail

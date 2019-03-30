@@ -1,0 +1,50 @@
+Dos scripts:
+	abbs:sys/upload.script:
+		<full filnavn> <extension> <nodenr>
+	- Executed after an upload
+
+
+	abbs:sys/logout.script
+		<nodenr>
+	- Executed after an logout
+
+	abbs:sys/pack.arc
+	abbs:sys/pack.lzh
+	abbs:sys/pack.zip
+	abbs:sys/pack.lha
+	abbs:sys/pack.arj
+	abbs:sys/pack.zoo
+		[Archive] [filename<wildcards>]
+	- Executed when we want to archive files.
+
+
+	abbs:sys/extract.arc
+	abbs:sys/extract.lzh
+	abbs:sys/extract.zip
+	abbs:sys/extract.lha
+	abbs:sys/extract.arj
+	abbs:sys/extract.zoo
+		[full path] <file>
+	- Executed when we want to extract archives
+
+	abbs:sys/View
+		[archive] [extension]
+	- Executed when we want to view an archive.
+
+	abbs:sys/Check
+		[archive] [extension]
+	- Executed to see if archive is of a type may extract files from
+
+	abbs:sys/shell-startup
+	- Used by "! EXIT"
+
+Arexx scripts:
+	abbs:sys/sysoppage.abbs
+
+	abbs:sys/LoginScript.abbs
+
+	abbs:sys/LogoutScript.abbs
+
+	abbs:sys/Newuser.abbs
+
+	abbs:sys/Questionnaire.abbs

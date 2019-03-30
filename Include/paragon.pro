@@ -1,0 +1,2 @@
+	XREF	doparagondoor
+	XREF	handleparagonmsg

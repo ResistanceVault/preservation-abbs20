@@ -1,0 +1,318 @@
+
+              #####  #      ######  #      ######  #       ###     #
+             #########     ######  ###    ######  ###     # #######
+            ##     ###    ##   #  # ##   ##   #  # ##    ##   ####
+           ##  ## # ##   #    #  #  #   #    #  #  #      ###
+           #  # ##  ##      ## ##  #       ## ##  #         ####
+           #    #   ##      ## ## #        ## ## #            ####
+            #  #    ##      #  ### #       #  ### #      ###    ###
+              ########         ##   ##        ##   ##   ######   #
+             #      ##     ####     #     ####     #   #    #####
+            #### #  ###   #  ####  #     #  ####  #    #      ##
+           #  ###    #   #    #####     #    #####      #     #
+                                                       ##
+
+                        Amiga Bulletin Board System
+                     (C) 1991-1994, Geir Inge Høsteng
+
+		       ConfigNode 2.1 Documentation
+		       ============================
+
+
+ConfigNode is the program that generates config files for the different
+abbs nodes you want to set up for your abbs board. Normaly these config
+files have an extension of .config, and they normaly reside in the
+abbs:config directory. (Offcourse you can change all this).
+
+Confignode has the ability to read old configfiles for easy modification,
+or generate new ones from scratch.
+
+When you start ConfigNode, all gadgets will be filled in with some default
+values. Modify the setup as you pleases, then save the config file.
+If you want to edit an old config file, just load it befor editing and
+saving.
+
+All gadgets marked with "(Accepts special characters)" accept C style
+control characters \n and \r. '\n' means newline (ASCII 10), and '\r'
+means carriage return (ASCII 13)
+
+Description of all the different gadgets
+****************************************
+
+Modem init string (Accepts special characters)
+=================
+This is the string abbs will send to the modem each time abbs wants to reset
+the modem. (Typically at startup and after each call)
+The modem init string is the most difficult thing to get right, and it is very
+important that it is correct. The init string will be different for different
+modems. You have to read the manual to figure it out.
+
+This string even accept the '~' special charater. When abbs encounters this character
+it waits one second (per '~' character).
+
+So, if you want to reset the modem, wait 3 seconds, then send an init string
+"atz\n~~~ATS0=0&c1&d2E0X6" would do the trick.
+
+This is abbs requirements for the modem :
+	- The modem should *not* answer the phone all by it selves.
+	  (Normaly S0=0 fixes this)
+
+	- It must show the true value of CD (CD on only if the modem detects
+	  carrier) (Usually &c1)
+
+	- The modem must disconnect when DTR goes low (usually &d2)
+
+	- The modem must not echo commands back to the machine (usually E0)
+
+	- the modem must give a connect string of the format "Connect xxxx"
+	  where xxxx is the connect speed (note. this should be the
+	  modem-modem speed, *NOT* modem-machine speed) Usually the X command
+	  controlls this, but sometimes other commands modifies this too)
+
+	- The modem must give som kind of string when a ring signal is detected
+	  usually this is "RING"
+
+So, "ATS0=0&c1&d2E0X6" is an example of an init string.
+
+
+Modem on hook string (Accepts special characters)
+====================
+When abbs wants the modem on hook again, this string is sent to the modem.
+Usually this is "ATH0"
+
+Modem off hook string (Accepts special characters)
+=====================
+This is the string abbs sends to the modem when abbs wants the modem to go
+off hook (to make the line busy). Usually this is "ATH1"
+
+Modem answer string (Accepts special characters)
+===================
+This is the string abbs sends to the modem when abbs wants the modem to answer
+an incomming call. Usually this is "ATA"
+
+Modem Dial string (Accepts special characters)
+=================
+Dial prefix for outgoing calls. Usually "ATDT"
+Note. This string is currently not used.
+
+Modem RING string (Accepts special characters)
+=================
+This is the string abbs listens for when waiting for an incomming call.
+Usually "RING"
+
+Modem CONNECT string (Accepts special characters)
+====================
+This it the string abbs waits for after it has sent the modem answer string
+to the modem. When abbs receives this string, it collects the speed
+(following the connect word), checks for a CD signal, and starts the login
+sequence. Usually "CONNECT".
+
+Modem NO CARRIER string (Accepts special characters)
+=======================
+The string the modem outputs after a failed dial or answer sequence. Usually
+"NO CARRIER". Note, Currently not used.
+
+Modem AT string (Accepts special characters)
+===============
+String used for getting the modems attension. Usually "AT"
+
+Modem OK string (Accepts special characters)
+===============
+String returned from the modem if everything was ok with last command
+Usually "OK"
+
+Min Baud
+========
+The minimum baud speed accepted for this node. If the modem connects with
+another modem with a speed less than this, the call will be terminated
+
+Connect Wait
+============
+Maximum number of seconds abbs will wait after an ATA command is issued
+for a "CONNECT" string to appear. If the connect string doesn't appear
+withing this timeout value, abbs will abort the connection sequence.
+This value must be atleast 10 seconds.
+
+Modem-machine baud
+==================
+The baud speed initially used for communication between the machine and
+the modem. If locked baud rate, this speed will never change.
+
+Serial Node->Local node->Nullmodem Node
+=======================================
+If Serial Node is selected this is a normal external node. It will use
+the serial device specified, and answer incomming calls in a normal way
+
+If Local node is selected, this is a local node. It will not open any
+serial device, and you can only logon to this node localy, using the
+node window.
+
+If Nullmodem node is selected, this modem will open the serial device
+specified. You can logon by just sending a character to the serialport.
+No "RING","ATA","CONNECT" sequence is used. Also, no CD cheching is done
+in this node.
+
+Comm port name
+==============
+Name of the serial device to use for this node. Only valid for serialnodes
+and nullmodem nodes. Usually this will be "serial.device" for the internal
+port and the CBM 2232 serial card, but for the GVP IOextender "gvpser.device"
+is the correct string. Other serial cards may have other names.
+
+The device selected must be compatible with serial.device (that is, accept
+the same commands, and behave in the same way)
+
+Comm port
+=========
+Unit number for the serial port (on the device specified in Comm port name)
+to open. For the internal (an usually for the first port on a serial card)
+the unit number is 0.
+
+CTS/RTS
+=======
+If this is checked, the node will use the CTS/RTS hardware handshaking
+(also called 7-wire) protocol. You must have this turned on if you use
+locked baud rate.
+
+*NOTE* if you turn this option on, you must also enable the CTS/RTS
+protocol in the modem. (&H1 omn some modems). Most modems also require
+that you set DSR always on (usually &S0). This must be added to the
+modem init string (&H1&S0)
+
+Locked baud rate
+================
+If this option is turned on abbs will not change the modem-machine speed
+according to the connect speed.
+
+This is the recomended way of configuring a high speed modem (9600 or more)
+with compression. Use a modem-machine baud higher than the modem speed
+(with compression the modem will be faster than the modem speed. For example,
+a 14400 modem with compression, v42bis or something else, will give you more
+than 14400 bps). For a 14400 modem, use a modem-machine baud of 19200 or
+38400, and turn on CTS/RTS.
+
+For this option to work, you must also tell the modem never to change the
+modem-machine baud on its own. (Usually &B1 fixes this). The modem must
+be able to support different speed between the 2 modems and modem-machine
+for this to work.
+
++++ hangup
+==========
+If this option is enabled, abbs will disconnect the user by first setting
+the modem in command mode (by sending '+++' to the modem), then sending
+the modem on hook string.
+
+This is not a very safe method, and it is not recomended. The only use for
+this option is if the modem is unable to dropp the connection when abbs
+dropps the DTR signal.
+
+No Sleep
+========
+If this choise is selected, there will be no sleep disconect checking on this
+node. Use with care. Only meant for non-dialup connections..
+
+Hold Path
+=========
+Full path to the hold directory for this node. This is where the node will store
+files used by the hold system.
+
+*NOTE* This path must be unique. NO OTHER NODES MAY USE THE SAME PATH!!!!
+
+Tmpdir path
+===========
+Full path to the temporary directory for this node. This is where the node will
+store temporary files sutch as scratchpad, qwk files etc.
+This directory will be created an deleted by abbs!!
+(Remember, all directorys except the last one in the path must always exists.
+ABBS will not creatre those! That is, if the tmppath is "t:tmp/node1tmpdir"
+t:tmp must exsist, ABBS will only create (and delete) the node1tmpdir
+directory)
+
+*VERY IMPORTANT*
+*NOTE* This tmppath must be unique. NO OTHER NODES MAY USE THE SAME PATH!!!!
+
+ABBS Screen->Public screen->Default public screen
+=================================================
+If ABBS Screen is selected the node will open on the abbs screen (the node
+will open the screen if it doesn't already exsist)
+
+If public screen is selected, you must enter the name of an exsisting
+public screen in the gadget directly to the right of the (ABBS Screen->
+Public screen->Default public screen) gadget. The node will open the window
+on the specified public screen (if it exsists)
+
+If default public screen is selected, the node windo will open up on the
+default public screen. (This is usually the Workbench, but need not always be)
+
+Fullsize->Backdrop->Tiny
+========================
+If Fullsize is selected the node window will open according to the position
+and size spesified in the window x-pos, window y-pos, height & Width
+gadgets
+
+If Backdrop is selected, the node will open a backdrop window with the full
+size of the screen it opens on (well, it will leave one line on the bottom,
+so you can click on the abbs screen and use the menus, if it's open on the
+abbs screen, that is).
+
+If Tiny is selected, the node will open a tiny status window at the x and y
+position specified in the window x-pos & window y-pos gadgets.
+
+Window x-pos
+============
+X position for the node window
+
+Window y-pos
+============
+Y position for the node window
+
+Height
+======
+Height of the fullscreen node window
+
+Width
+=====
+Width of the fullscreen node window
+
+Open at startup
+===============
+If this gadget is checked, the node will open its window when the node is
+started. If it is not selected the node window will only apear when you
+request it (with show in the gui)
+
+Font
+====
+Allows you to choose the font used for the node window. (Use the choose file
+gadget to the right of the font specification)
+
+Set min time between two logins
+===============================
+Opens a separate window where you can set the minimum time (in minutes)
+between to logins by the same user in a spesific hour of the day (1-24)
+
+That means, if it's 18:27, the setting for 18 (second row, gadget nr 9)
+is 5, and user foo bar logs off the system, user foo bar can not logon
+to the system until 18:32. (Other users will be able to login before
+18:32)
+
+Set max login time
+==================
+Opens a separate window where you can set the maximum onlinetime (in
+minutes) in a spesific hour of the day (1-24). If this value is less
+than the users timelimit, this value will be used instead of the users
+timelimit. If the user has unlimited timelimit (0), this value is not
+applied at all to that user.
+
+So, if it's 17:36,  the setting for 17 (second row, gadget nr 8) is 15,
+and user foo bar logs into the system, he will be thrown out at 17:51
+unless he is thrown out/logs out before that
+
+History:
+********
+
+	2.2	Added No Sleep gadget.
+		Now accepts a config file as parameter.
+
+	2.1	Fixed bug with missing filename gadget.
+
+	2.0	Total rewrite

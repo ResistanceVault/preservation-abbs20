@@ -1,0 +1,11 @@
+i int SetupScreen( void )
+	"if ( ! ( Scr = LockPubScreen( PubScreenName )))" til "if ( ! ( Scr = LockPubScreen(NULL)))"
+
+fjerne "static" i
+	static struct Window         *ConfignodeWnd = NULL;
+
+fjerne "static" i
+	static struct Menu           *ConfignodeMenus = NULL;
+
+fjerne "static" i
+	static struct Gadget         *ConfignodeGadgets[35];

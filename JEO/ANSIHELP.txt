@@ -1,0 +1,26 @@
+Her er alle escape codene for å få ansi farger m.m.
+
+[00m Plain black       [00m:(escape)[00m
+[01m Bold              [00m:(escape)[01m
+[02m Plain White       [00m:(escape)[02m
+[03m Kursiv            [00m:(escape)[03m
+[04m Underline         [00m:(escape)[04m
+[05m Plain             [00m:(escape)[05m
+[06m Plain             [00m:(escape)[06m
+[07m Reverse colours   [00m:(escape)[07m
+[08m Hidden text       [00m:(escape)[08m
+[30m Grey              [00m:(escape)[30m
+[31m Black             [00m:(escape)[31m
+[32m White             [00m:(escape)[32m
+[33m Blue              [00m:(escape)[33m
+[34m Cyan              [00m:(escape)[34m
+[35m Purple            [00m:(escape)[35m
+[36m Yellow            [00m:(escape)[36m
+[37m Red               [00m:(escape)[37m
+[41m Black Backgrnd    [00m:(escape)[41m
+[42m White Backgrnd    [00m:(escape)[42m
+[43m Blue Backgrnd     [00m:(escape)[43m
+[44m Cyan Backgrnd     [00m:(escape)[44m
+[45m Purple Backgrnd   [00m:(escape)[45m
+[46m Yellow Backgrnd   [00m:(escape)[46m
+[47m Red Backgrnd      [00m:(escape)[47m

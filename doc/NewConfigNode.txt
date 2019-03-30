@@ -1,0 +1,34 @@
+(Cycle/String) PublicScreenName (ABBS,Default public/specify),
+(string) Hold Path
+(string) Tmpdir Path
+(string) Font
+(number) FontSize
+(number) Window_x,Window_y,Window_height,Window_width for fullsize window
+(number) Window_x,Window_y for tiny window (pos)
+
+(bool)	Don't show (if node window should open or not at startup)
+(bool)  If node window should open in tiny or full size
+(bool)  Backdrop window
+(bool) Internal/External node (if internal, no serial settings are interrresting (that is, the rest of this list)
+	(string) Comm port name
+	(number) Comm port number
+	(bool)	CTS/RTS
+	(bool)	Locked baud rate
+	(bool)	+++ hangup
+	(bool) Nullmodem (if true, the following serial settings are not interesting)
+		(string) Modem Init
+		(string) Modem On Hook
+		(string) Modem Off Hook
+		(string) Modem Answer
+		(string) Modem Dial
+		(string) Modem Ring
+		(string) Modem Connect
+		(string) Modem No carrier
+		(string) Modem OK string
+		(string) Modem AT string
+		(number) Minimum baud
+
+	(number) Connect Wait
+	(number) Modem-machine baud
+	(number) Max logintime (in minutes) during this hour (24 numbers)
+	(number) Min time between two logins (in minutes) during this hour (24 numbers)

@@ -1,0 +1,26 @@
+ListFiles v 1.0
+
+*NOTE*
+
+ABBS must be running. Running ListFiles when abbs is not running has no
+effect.
+
+*NOTE*
+
+Template: Since/K,ToConf/S,Upcase/S,Upload/S,All/S,Check/S,Fix/S:
+Usage : [Since=<date>] [ToConf] [Upcase] [Upload] [All] [Check] [Fix]
+
+ Since: Only list files uploaded on or after this date.
+
+ ToConf: Include files private to conferences too.
+
+ Upcase: Upcase all filenames.
+
+ Upload: Include upload dir in listing.
+
+ All: List everyting, even private files.
+
+ Check: Only list files missing corresponding file on disk.
+
+ Fix: Delete file entries that don't have a matching file on disk.
+

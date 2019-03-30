@@ -1,0 +1,143 @@
+
+              #####  #      ######  #      ######  #       ###     #
+             #########     ######  ###    ######  ###     # #######
+            ##     ###    ##   #  # ##   ##   #  # ##    ##   ####
+           ##  ## # ##   #    #  #  #   #    #  #  #      ###
+           #  # ##  ##      ## ##  #       ## ##  #         ####
+           #    #   ##      ## ## #        ## ## #            ####
+            #  #    ##      #  ### #       #  ### #      ###    ###
+              ########         ##   ##        ##   ##   ######   #
+             #      ##     ####     #     ####     #   #    #####
+            #### #  ###   #  ####  #     #  ####  #    #      ##
+           #  ###    #   #    #####     #    #####      #     #
+                                                       ##
+
+                        Amiga Bulletin Borad System
+                        (C) 1991, Geir Inge Høsteng
+
+			 ConfigNode Documentation
+			==========================
+
+
+ConfigNode brukes til å generere node config filer til abbs (de som brukes
+i abbs:config/startup.config).
+
+ConfigNode kan lese inn og forandre config'er som allerede eksisterer, eller
+starte fra grunnen av.
+
+Når du starter opp ConfigNode er alle gadget'er allerede utfyllte med et
+forslag, for å gjøre det lettere. Hvis du vil slette innholdet i en tekst
+gadget, velg gadget'en og trykk Høyre Amiga tast, og X.
+
+
+Forklaring av de forskjellige gadgetene
+***************************************
+
+Local node
+==========
+Når denne er valgt, er det en lokal node, og alle andre gadget'er untatt
+"Tiny mode" er uvesentlig (de brukes ikke)
+
+Tiny Mode
+=========
+Dette sier at noden skal åpne et lite vindu, hvor man bare ser litt status,
+istedenfor et stort vindu hvor man ser alt som foregår. Fin til å spare chip
+ram.
+
+Save config
+===========
+Denne lagrer configfile med det navnet som er i "Config filename" gadget'en.
+Alle config'er bør ligge i ABBS:config/ directoryen.
+
+Load config
+===========
+Denne henter inn en config med filnavnet som ligger i "Config filename".
+
+Cancel
+======
+Avslutter Confignode uten å lagre noe som helst.
+
+Config filename
+===============
+Filnavnet som configfile vil bli lagret under, eller hentet fra.
+Pass på og forandre denne, slik at du ikke sletter andre noder, hvis
+ikke det er meningen.
+
+Serial device
+=============
+Velger hvilket device ABBS skal bruke på denne noden. Det må være et
+device som er kompatibelt med serial.device. Har du ekstra serialporter,
+og vil bruke de, velg devicet for disse her.
+Har du bare den standard serialporten, må dette være serial.device.
+
+Serial port unit
+================
+Sier hvilken unit som skal åpnes.
+Har du bare den standard serialporten, må dette være 0.
+
+Modem init string
+=================
+Dette er modem init stringen som abbs sender til modemet.
+Forslaget er en initstring til et EB 2424A modem (Det samme som TBK 4161)
+Dette er veldig forskjellig fra modem til modem.
+
+Viktige ting er at modemet *ikke* skal ta røret ved ringe signal. (Vaneligvis
+fikser ATS0=0 dette)
+Modemet skal bare sende CD signalet når det har Carrier.
+Modemet skal bryte forbindelsen når DTR går lav.
+Ekko må være av.
+Modemet må gi en "Connect xxxx" string ved svar, der xxxx er baudhastigheten
+Modemet må gi "RING" (eller noe lignende) ved ringesignal.
+
+Modem answer string
+===================
+Dette er stringen som får modemet til å svare på annrop. Vaneligvis "ATA"
+
+Modem off hook string
+=====================
+Dette er stringen som får modemet til å ta av røret. Vaneligvis "ATH1"
+
+Modem on hook string
+====================
+Dette er stringen som får modemet til å legge på røret. Vaneligvis "ATH0"
+
+Modem call string
+=================
+String som skal settes forran et nummer for å ringe. Vaneligvis "ATDT"
+OBS. Dette brukes ikke for øyeblikket.
+
+Modem RING string
+=================
+Dette er den stringen modemet sender når det oppdager ringesignal.
+Vaneligvis "RING".
+
+Modem CONNECT string
+====================
+Dette er stringen som modemet sender når det får connect (etterfulgt av
+baud hastigheten). Vaneligvis "CONNECT".
+
+Modem AT string
+===============
+String som brukes for å få modemet's oppmerksomhet. Vaneligvis "AT".
+
+Modem OK string
+===============
+Stringen som modeme sender når alt har gått bra med gitt komando.
+Vaneligvis "\r\nOK\r\n". \r er return, og \n er newline.
+
+Locked baud rate
+================
+Er denne valgt vil noden gi blaffen i hastigheter som kommer etter CONNECT
+stringen, og alltid bruke baud hastigheten i boksen til høyre
+Den bør være lik eller høyere enn det som modemet maks kan yte. Modemet
+må også supportere låst baud hastighet (Mulighet for forskjellig baud
+hastighet mellom maskin og modem, og modem og linje).
+
+Xon/Xoff
+========
+Velger Xon/Xoff handshaking på noden.
+
+CTS/RTS
+=======
+Velger CTS/RTS (eller 7-wire) handshaking.
+

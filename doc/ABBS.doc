@@ -1,0 +1,457 @@
+
+              #####  #      ######  #      ######  #       ###     #
+             #########     ######  ###    ######  ###     # #######
+            ##     ###    ##   #  # ##   ##   #  # ##    ##   ####
+           ##  ## # ##   #    #  #  #   #    #  #  #      ###
+           #  # ##  ##      ## ##  #       ## ##  #         ####
+           #    #   ##      ## ## #        ## ## #            ####
+            #  #    ##      #  ### #       #  ### #      ###    ###
+              ########         ##   ##        ##   ##   ######   #
+             #      ##     ####     #     ####     #   #    #####
+            #### #  ###   #  ####  #     #  ####  #    #      ##
+           #  ###    #   #    #####     #    #####      #     #
+                                                       ##
+
+                        Amiga Bulletin Borad System
+                        (C) 1991, Geir Inge Høsteng
+
+Hva er ABBS ?
+=============
+
+   ABBS er et BBS system (EOT for norsk fanatikerne) laget for Amiga. Det er
+ en klone av MBBS, et BBS system for PC, laget av Mike Robertson i
+ Gallagher & Robertson A/S. ABBS er designet for å være et flernode system
+ fra grunnen. ABBS har fremdeles en del igjen for å komme opp på MBBS nivå,
+ men jeg regner med at denne avstanden vil minke etterhvert.
+
+En liten advarsel :
+===================
+
+   ABBS har fremdeles endel utvikling igjen, men jeg synes at ABBS allerede
+ er bedre enn de fleste BBS systemer jeg har sett til Amiga.
+ ABBS er ikke blitt testet så mye som jeg gjerne ville, så det kan hende at det
+ fremdeles er noen uoppdagede feil i ABBS. Disse vil bli fikses så fort de
+ blir funnet (og kan reproduseres av meg).
+
+ Denne dokumentasjonen er ikke den aller beste heller, men det er alt jeg har
+ tid til for øyeblikket.
+
+Komandoer
+=========
+
+
+Global meny (alltid tilgjengelig) :
++++++++++++++++++++++++++++++++++++
+
+(Q) Main menu
+	velger main menyen som den aktive
+
+(R)ead menu
+	velger read menyen som den aktive
+
+(F)ile menu
+	velger fil menyen som den aktive
+
+(U)tility menu
+	velger utility menyen som den aktive
+
+(CHAT) menu
+	velger chat menyen som den aktive
+
+(!) sysop/sigop menu
+	velger sysop eller sigop menyen som den aktive
+
+(J)oin conference (conferanse navn)
+	Bytter akktiv konferanse, til den konferansen du spesifiserer.
+	spesifiserer du ikke noen konferanse vil du få en liste over
+	tilgjengelige konferanser.
+	Hvis konferansen er privat, vil du ikke kunne Join'e denne
+
+(H)elp
+	Skriver ut meny over de kommandoer som er tilgjengelig i øyeblikket
+
+(G)oodbye
+	 Log'er ut, og bryter forbindelsen, eller starter en ny session
+
+(W)ho's on system
+	Lister ut en liste med endel info over alle noder som er oppe
+
+(SH)OW conference status
+	Lister ut alle konferansene du er medlem av, og sier hvor mange uleste
+	melding det er i de konferansene
+
+(COM)ment to SYSOP
+	Skriver en privat kommentar til sysop (system operator'en)
+
+(B)ulletin menu
+	Lister ut en liste over tilgjengelige bulletin'er, og lar deg lese dem
+
+(E)nter message in current conference
+	Skriver en melding til en (eller alle) bruker.
+
+(GRAB) new messages
+	Pakker alle uleste meldinger i en fil, og sender den til deg.
+
+(TIM)e online
+	Lister ut nå du log'a inn, hvor lenge du har vært inne, og hvor mye
+	tid du har igjen (hvis du har en begrensning da..)
+
+(NO)de messages
+	Brukes for å skrive en lingjers meldinger til andre noder.
+	Velger du node nr 0, sendes meldingen til alle nodene.
+
+Main meny
++++++++++
+(S)how users
+	Lister ut alle brukere på systemet, og siste gang de var innom.
+
+Read meny
++++++++++
+
+<Enter>
+	Leser neste uleste meldingen, hvis det ikke er noe, join'er denne
+	komandoen neste konferanse som du er medlem i, hvis det er noen med
+	uleste meldinger.
+
+R...read messages (samme som <enter>)
+
+<nummer>
+	Leser melding med dette nummeret
+
+O...show original
+	Viser den første meldingen i den kjeden du nå leser (den meldinga som
+	startet diskusjonen).
+
+'+'...next msg
+	leser neste melding
+
+'-'...previous msg
+	leser forige melding
+
+'.'...same msg
+	leser siste meldig om igjen
+
+'<'...show reference
+	Leser meldingen den nåværende meldingen er et svar til (hvis den er
+	et svar)
+
+'>'...show reply
+	Viser første svar på denne meldingen, hvis den har noen svar.
+
+'='...show other reply
+	Viser annen melding som svarer på samme melding som denne gjør.
+
+RE...reply to message
+	Skriver et svar på den siste leste meldingen.
+
+(M)ark menu
+	velger mark menyen som den aktive.
+
+MODE...change read mode
+	Slår av og på Read Ref mode.
+
+KILL...kills message
+	Sletter siste leste melding, hvis du har tillatelse til det.
+
+REC...recover killed message
+	gjennoppliver siste leste melding, hvis du har tillatelse til det.
+
+(RES)ign conference
+	melder deg ut av den nåværende konferansen (Det er ikke alle
+	konferanser du kan gjøre dette i)
+
+Mark meny
++++++++++
+
+Alle komandoene vil returnere deg til Read meny'en etter at de er ferdige.
+
+<nummer> mark message with given number
+	merker melding med dette nummeret.
+
+.  marks message just read
+	merker meldingen vil nettopp leste.
+
+F  moves your messages to head of queue
+	Flytter de meldingene som er til deg først i lese køen.
+
+N  asks how many messages are marked now
+	Forteller hvor mange meldinger som ligger i mark køen
+
+R  resets ALL marks
+	Sletter hele mark køen.
+
+T  marks all messages in this thread
+	merker alle meldingene som er svar på denne.
+
+U  removes marks for this entire thread
+	sletter merkingen av alle meldingene som er svar på denne.
+
+O  removes marks for all messages not to or from you
+	Sletter alle meldinger som ikke er fra deg eller til deg fra lesekøen.
+
+Z  removes marks for author of msg just read
+	Sletter alle meldinger skrevet av samme forfatter som siste leste
+	melding fra lese køen.
+
+A  mark messages from particular person
+	merker meldinger fra en spesiell person.
+
+D  mark messages on or after given date
+	merker alle meldinger som er nyere enn en dato.
+
+G  marks group of messages by number
+	merker en gruppe av meldinger.
+
+P  find and mark msgs to you personally.
+	merker meldinger til deg.
+
+ENTER exits from this menu
+	Går tilbake til read meny
+
+file meny
++++++++++
+
+(L)ist files
+	Lister filer i en elller alle directory'er.
+
+(UP)load file (send file to system)
+	Overfører en fil fra deg til basen.
+
+(D)ownload file (receive file from system)
+	Overfører en fil fra basen til deg.
+
+(LP) List private files
+	Lister filer som er privat til deg.
+
+(N) List new files
+	Lister filer som er nyere enn en hvis dato.
+
+(K)eyword search
+	Søker etter en fil ved hjelp av et søke ord.
+
+(S)can file names
+	Søker etter en fil ved hjelp av en del av filnavnet.
+
+(RET)ract file
+	Sletter en fil du har UPloadet.
+
+(PU) PRivate Upload
+	Uploader en fil privat til noen.
+
+Utility meny
+++++++++++++
+
+(A)ddress change
+- forandrer brukerens adresse og telefon nr.
+
+(P)assword change
+- Forandrer passord
+
+(S)et character set
+- Forandrer tegnsett konvertering
+
+(V)iew settings
+- Skriver ut de nåværende valg
+
+(L)ines per page
+- Setter antall linjer som kan skrives ut i et sett (OBS, virker ikke på
+  fillistene)
+
+(T)ransfer protocol
+- Velger overføringsprotokoll
+
+(M)ode change
+- Forandrer endel instillinger, bla. farver, bruk av Full Screen Editor, og
+  G&R protokoll.
+
+(N)ame change
+- Forandrer bruker navnet
+
+Sysop meny
+++++++++++
+
+(A)ccess change
+- Forandrer access på en eller alle bruker(e) i den nåværende konferansen
+  Følgende access muligheter er mulige
+
+  Read     - Brukeren kan lese meldinger. Denne forteller om brukeren er
+             medlem i en konferanse eller ikke.
+             OBS - ABBS har ingen invite funksjon enda, så bruk dette bit'et
+             til å invitere personer til en konferanse så lenge.
+  Write    - Brukeren kan skrive meldinger i konferansen
+  Upload   - Brukeren har Upload tilatelse i denne konferansen
+  Download - Brukeren har Download tilatelse i denne konferansen
+  Filevip  - DL/Ul ratio gjelder ikke denne brukeren (OBS fungerer bare i
+             News konferansen)
+  Sigop    - Brukeren er sigop i denne konferansen
+  Z sysop  - Brukeren er sysop i konferansen (Bare  virkelig sysop kan gi
+             Z access).
+
+  Konferansen News er spesiell når det gjelder access. Har ikke brukere
+  DL/UL access i denne, så kan de ikke UL/DL'e noen filer. Sysop access'en i
+  News blir kopiert over i nye konferanser man joiner (hvis man har det)
+
+(S)how user
+- VIser info om en bruker
+
+(T)ime limit change
+- Forandrer tids begrensning for brukere.
+
+(FT) File Time limit change
+- Forandrer fil tids begrensning for brukere.
+
+(KILL) user
+- Dreper en bruker. Brukeren vil ikke kunne log'e inn igjen.
+
+(UNKILL) user
+- gjennoppliveren tidligere drept bruker.
+
+(CI)   Conference Install
+- installerer en ny konferanse. du kan sette følgende flagg:
+  R - Når denne er valgt blir nye brukere automatisk medlemmer av denne
+      konferansen. (OBS, ikke implementert enda)
+  W - Alle brukere som join'er denne konferansen får lov til å skrive i den.
+  V - Dette blir en VIP konferanse, dvs, folk som ikke er medlem i denne
+      konferansen, kan ikke bli det uten at sysop eller sigop gir de tillatelse
+  A - Tillater private meldinger i konferansen
+  E - Tilater folk å RESign'e fra denne konferansen
+  P - Dette er en postboks konferanse (bare private meldinger)
+
+(BI)   Bulletin install
+- instalerer en ny eller oppdaterer en gammel bulletin.
+  Vil du erstatte en gammel bulletin med en ny, svar med nummeret på
+  den bulletinen du vil erstatte. Skal du installere en ny bulletin, trykker
+  du bare return. Hver konferanse kan ha sitt eget sett med bulletin'er
+
+(BC)   Bulletin clear
+- Sletter alle bulletin'er i en konferanse
+
+(IF)   Install file area
+- installerer et nytt fil directory.
+
+(FI)   file install
+- instalerer en fil. Svarer du med et bruker navn på det første spørsmålet
+  blir filen "upload'et" privat til denne brukeren, hvis du bare trykker return
+  blir filen lagt i upload dir'en, og alle kan DL'e den.
+
+(MOVE) Move file
+- Flytter en fil fra en fildir til en annen
+
+(DOS)  Execute dos command
+- Utfører en dos komando
+
+(MEM)  Memory statistics
+- skriver ut endel info om minneforbruk.
+
+(DELCONF) Delete Conference
+- Sletter en konferanse
+
+(RENCONF) Rename Conference
+- forandrer navn på en konferanse. Gir deg også muligheten til å forandre
+  konferansens status bits
+
+(BOOT) - Boot machine
+- Boot'er maskinen.
+
+(D) Delete log file
+- Sletter en node log fil
+
+(L) List log file
+- Skriver ut en node log fil
+
+(M) Modify file
+- Oppdaterer størrelsen på fila, oppdaterer dato, og lar deg forandre komentaren
+
+(DELDIR) - Delete Dir
+- Sletter en (abbs) fil directory. Alle filene blir liggende igjen på disken.
+
+(RENDIR) - Rename Dir
+- Forandrer navnet på en (ABBS) fil directory.
+
+(ZAP) - Zap file
+- Sletter en fil fra ABBS's filliste, men lar filen ligge igjen på disken.
+
+Sigop meny
++++++++++
+
+(S)how user
+- VIser info om en bruker
+
+(BI) Bulletin install
+- instalerer en ny eller oppdaterer en gammel bulletin.
+  Vil du erstatte en gammel bulletin med en ny, svar med nummeret på
+  den bulletinen du vil erstatte. Skal du installere en ny bulletin, trykker
+  du bare return. Hver konferanse kan ha sitt eget sett med bulletin'er
+
+(A)ccess change
+- Forandrer access på en eller alle bruker(e) i den nåværende konferansen
+  Følgende access muligheter er mulige
+
+  Read     - Brukeren kan lese meldinger. Denne forteller om brukeren er
+             medlem i en konferanse eller ikke.
+             OBS - ABBS har ingen invite funksjon enda, så bruk dette bit'et
+             til å invitere personer til en konferanse så lenge.
+  Write    - Brukeren kan skrive meldinger i konferansen
+  Upload   - Brukeren har Upload tilatelse i denne konferansen
+  Download - Brukeren har Download tilatelse i denne konferansen
+  Filevip  - DL/Ul ratio gjelder ikke denne brukeren (OBS fungerer bare i
+             News konferansen)
+  Sigop    - Brukeren er sigop i denne konferansen
+  Z sysop  - Brukeren er sysop i konferansen (Bare  virkelig sysop kan gi
+             Z access).
+
+  Konferansen News er spesiell når det gjelder access. Har ikke brukere
+  DL/UL access i denne, så kan de ikke UL/DL'e noen filer. access'en i News
+  blir kopiert over i nye konferanser man joiner.
+
+
+Chat meny
++++++++++
+<nummer> chat med node nr <nummer>. OBS. Det er desverre en bug her som kan
+	 kræsje abbs..
+
+(A)availible
+	setter deg tilgjengelig for chat.
+
+(N)ot availible
+	setter deg utilgjengelig for chat.
+
+(S) Chat sysop
+	Blinker sysop's skjerm, så han vet at noen vil snakke med han.
+	Husk at Sysop ikke alltid er tilstede.
+	Hvis sysop er tilstede, og han vil chat'e så stikker han innom ...
+
+IKKE kopier meg!
+================
+
+   Det er ikke lov å kopiere ABBS, og jeg har tatt skritt for å kunne
+ straffe de som pirat-kopierer ABBS. Kjøp heller en kopi, og støtt den videre
+ utviklingen!
+ Hvis jeg oppdager en piratkopi, vil vedkommende som kjøpte den bl.a. miste
+ alle oppgraderings/bugfix muligheter!
+
+Forlag til forbedringer og Bug raport'er
+========================================
+
+   Mottas med takk, men for at bug rapportene skal ha noen verdi, må de være
+ slilk at jeg kan reprodusere feilen hos meg. Det nytter lite med "det funker
+ ikke" osv.
+
+ Det vil gå litt tregt frem til sommeren 92, siden jeg er inne i militæret,
+ men du kan komme i kontatkt med meg på min support base for ABBS på
+ (02) 277176, der jeg er sysop, eller geirhos@ifi.uio.no over internet.
+
+Takk til :
+==========
+
+    Mike Robertson i Gallagher & Robertson A/S, for source'n til hans Full
+    Screens Editor.
+
+    Vebjørn Forsmo for å ha brukt en stor del av sin enorme telefon regning
+    på å teste ABBS, og for ANSI menyene, som han har laget.
+
+    Alle som har kommet med forslag og testet ABBS underveis.
+
+
+				Geir Inge Høsteng, forfatter av ABBS.
+

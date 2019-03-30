@@ -1,0 +1,88 @@
+
+              #####  #      ######  #      ######  #       ###     #
+             #########     ######  ###    ######  ###     # #######
+            ##     ###    ##   #  # ##   ##   #  # ##    ##   ####
+           ##  ## # ##   #    #  #  #   #    #  #  #      ###
+           #  # ##  ##      ## ##  #       ## ##  #         ####
+           #    #   ##      ## ## #        ## ## #            ####
+            #  #    ##      #  ### #       #  ### #      ###    ###
+              ########         ##   ##        ##   ##   ######   #
+             #      ##     ####     #     ####     #   #    #####
+            #### #  ###   #  ####  #     #  ####  #    #      ##
+           #  ###    #   #    #####     #    #####      #     #
+                                                       ##
+
+                        Amiga Bulletin Borad System
+                        (C) 1991, Geir Inge Høsteng
+
+				Instalasjon
+				===========
+
+Instalasjon av ABBS
+===================
+
+OBS:	Har du allerede installert demo versjonen av ABBS, slett hele
+	demoversjonen. ABBS og demoversjonen har forskjellige config filer,
+	og de er ikke kompatible
+
+1) Velg en directory eller partisjon hvor du vil ha abbs, (Lag gjerne en
+   ny directory med MakeDir komandoen).
+
+   F.eks : "Makedir work:ABBS"
+
+2) Assign denne til ABBS:, og plasser denne assignen i s:user-startup
+
+   F.eks : "Assign ABBS: work:abbs", hvis "work:abbs" er directoryen valgt over.
+
+   Vær obs på at hvis det står en diskett i diskettstasjonen som heter abbs, så
+   vil du ikke få feilmeldingen (Can't cancel abbs). Hvis du setter inn en
+   diskett som heter abbs etter at du har foretatt assign'en, så vil disketten,
+   og ikke harddisken bli brukt.
+
+3) Kopier hele abbs oppsettet fra disken til det som nå er abbs:
+
+   F.eks : "copy df0:#? abbs: all"
+
+4) Så forandrer du filene som nå ligger i sys directoryen (pack.lzh osv).
+   Bytt ut teksten "sys:cc/" med den path'en pakkerene har på din maskin.
+   Har du ikke en av pakkerene, så slett den tilsvarende pack filen, så vil
+   ikke folk kunne velge den pakke metoden. Når du får tak i pakkeren, kan
+   du legge de inn igjen.
+
+   F.eks : "sys:cc/arc" til "c:arc" (La resten være som det er.)
+
+5) Kopier filene i abbs:l til l:, abbs:libs: til libs: og abbs:s til s:
+
+6) Start så abbs. ABBS skal bare åpne et vindu, og ikke gjore noe mere
+   foreløpig.
+
+   F.eks : "run abbs"
+
+7) Configurer basen med ConfigBBS programmet. (se i ConfigBBS.doc for bruk)
+
+8) Avslutt nå ABBS, ved å klikke på "Quit" button'en eller aktivisere abbs
+   vinduet og velg shutdown i menuen (Amiga-Q)
+
+9) Konfigurer de nodene du trenger med ConfigNode programmet
+   (se i ConfigNode.doc for bruk). Husk å lagre de under forskjellige navn,
+   og at de må ligge i ABBS:Config/ directoryen. (Husk også at de får
+   forskjellig nodetmpdir og hold directory)
+
+10) Legg inn navnene på nodefilene (som du lagde i punkt 9) inn i fila
+   ABBS:Config/startup.config, på samme måte som eksemplene som allerede
+   ligger der. (De som ligger der bør du slette, eller komentere ut).
+
+11) Legg inn følgende linje i s:user-startup
+
+   run >nil: <nil: l:fifo-handler
+
+12) Alt skulle nå være ferdig installert. Start ABBS en gang til, og se at
+   det nå åpnes et vindu for hver node du la inn i ABBS:Config/startup.config.
+
+   Det kan være lurt å forandre s:user-startup slik at abbs startes automatisk
+   ved boot.
+
+Hvis det bare dukker opp en vindu, som forsvinner raskt igjen, så kan feilen
+være at du ikke har assign'et t: til noen steder.
+"assign t: ram:" eller "Makedir ram:t" + "assign t: ram:t" fikser dette.
+

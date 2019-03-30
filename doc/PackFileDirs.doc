@@ -1,0 +1,20 @@
+*******************************************************************************
+Warning. THIS IS A BETA VERSION. BACKUP ALL .FL FILES BEFORE RUNNING THIS PROG.
+*******************************************************************************
+
+OBS: ABBS must be down (not running) for this programm to work.
+
+Usage : PackFileDirs
+
+Purpose:
+
+PackFileDirs will remove all dummy fileentries in the .fl files left over
+from files delted or moved.
+
+
+This is a beta version, not fully tested. (Well, seams to work ok :-)
+There will be a nother version, also working while abbs is up.
+
+*******************************************************************************
+Warning. THIS IS A BETA VERSION. BACKUP ALL .FL FILES BEFORE RUNNING THIS PROG.
+*******************************************************************************

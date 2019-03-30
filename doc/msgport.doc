@@ -1,0 +1,45 @@
+WriteText
+	- Write a text to screen/serialport
+	pm_Command	= Node_WriteText
+	pm_Data		= null terminated text
+
+WriteTexto
+	- Write a text to screen/serialport with newline
+	pm_Command	= Node_WriteText
+	pm_Data		= null terminated text
+
+FlushSer
+	- flush serial port
+	pm_Command	= Node_FlushSer
+
+WriteSerLen
+	- Write a number of bytes to the serial port only
+	pm_Command	= Node_WriteSerLen
+	pm_Data		= text string
+	pm_Arg		= string length
+
+ReadSerLen
+	- Read a number of bytes to the serial port with timeout
+	pm_Command	= Node_ReadSerLen
+	pm_Data		= read buffer
+	pm_Arg		= number of characters to read
+	pm_Arg2		= timeout in microseconds (note: 1000000 == 1 second).
+			  A Timeout of 0, means read the characters in buffer
+returns:
+	pm_Arg		= number of characters read
+	pm_Error	= PError_NoCarrier if no carrier was detected
+
+ReadSer
+	- Read a bytes from the serial port. Wait for it to arrive
+	pm_Command	= Node_ReadSer
+
+returns:
+	pm_Data		= character read
+	pm_Error	= PError_NoCarrier if no carrier was detected
+
+QuitLogin
+	- Tell ABBS  that frontdoor login sequence is finished
+	pm_Command	= Node_QuitLogin
+	pm_Arg		= Login status. 0 means frontdoor login compleate. Logoff
+			  ~0 means this is a user login. Continue login sequence.
+	pm_Data		= Line read from user, if this was a user login (null terminated)

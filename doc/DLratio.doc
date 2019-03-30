@@ -1,0 +1,11 @@
+
+DLratio <ratio nr> [<listing file> [NOACTION]]
+
+ratio nr er forholdstallet. Vil du ha en upload pr 5. DL, skal dette tallet
+være 5.
+
+DLratio kan generere en liste over hvem som mister/får DL access. Spesifiserer
+du et filnavn på <listing file> vil dette skje.
+
+Spesifiserer du NOACTION, vil den generere lista, men ikke ta fra/gi noen
+access.

@@ -1,0 +1,10 @@
+
+Resets the filedir order to a known state. Usefull if the order is in
+a terrible state, so abbs can't walk the filedir list.
+
+But, for this program to have an effect, ABBS must be down.
+
+Another reason that abbs may stop to walk the filedir list is because of
+an error in on of the .fl files. Usually it's of a wrong size.
+FixFileOrder will not fix this.
+

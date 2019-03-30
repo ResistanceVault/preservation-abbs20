@@ -1,0 +1,42 @@
+Misc Menu:
+
+ABBS now has a misc menu where you the sysop can insert any command you
+want to add to abbs. You can only add commands in the Misc menu with
+Arexx scripts.
+
+To set up Misc:
+	"Makedir abbs:Misc"
+
+To add commands to the misc menu, put arexx scripts in the abbs:Misc
+directory. The name of the script determinantes the name of the command in 
+the misc menu. To get a command called hello, you add a arexx script called
+hello.abbs in the directory.
+
+This is an example setup:
+
+     abbs:Misc (dir)
+       Hello.abbs
+
+Here is the Hello.abbs file :
+
+************* cut ***************
+/* Example Arexx script for abbs
+*/
+
+options results
+
+outimage
+
+username
+if RC >= 5 THEN DO	/* Exit if there is no user online */
+	EXIT
+END
+
+tekst = '"Hi, '||result||'. This is the Misc Hello command talking to you!"'
+writetext tekst
+outimage
+
+exit
+************* cut ***************
+
+That's about all there is to it.

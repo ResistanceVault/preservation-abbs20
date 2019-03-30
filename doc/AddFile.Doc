@@ -1,0 +1,53 @@
+OBS: ABBS være i gang for at dette programmet skal virke
+
+Usage : AddFile [-c<confname>|-u<User name>] <full filename>
+	<filename> <directory> <description>
+
+Obs. Håndterer ikke space i filnavnene.
+
+Du kan enten velge -c<conference> eller -u<User name> eller ingen av delene.
+Dvs, aldri begge optionene.
+
+<confname> er konferansen filen skal være privat til
+
+<User name> er brukeren filen skal være privat til
+
+<full filename> er amiga dos filnavnet.
+
+<filename> er filnavnet filen vil få i abbs
+obs: maks 16 tegn langt
+
+<directory> er en av fildirene i abbs
+
+<description> er fil beskrivelsen (her kan du ha med space)
+obs: maks 40 tegn langt
+
+
+Så for å få legge inn filen "df0:test.lzh" i fildir'en "Utilitie" slik at
+abbs brukere kan DL dem som "test.lzh", med beskrivelsen "en liten test",
+skriver du :
+
+AddFile df0:test.lzh test.lzh utilities en liten test
+
+
+Addfile -cVIP df0:test.lzh test.lzh VIPfiles en fil bare VIP får DL'e
+
+Legger filen df0:test.lzh inn som en fil som er privat til konferansen VIP,
+i fildiren VIPfiles, med beskrivelsn "en fil bare VIP får DL'e"
+
+
+Addfile -uola Nordman df0:test.lzh test.lzh PRIVATE en fil bare ola får DL'e
+
+Legger filen df0:test.lzh inn som en fil som er privat til brukeren
+"OLA NORDMAN" i fildiren PRIVATE, med beskrivelsn "en fil bare ola får DL'e"
+
+
+Tips:
+
+Skal du legge inn mange filer av gangen, kan du lage et dos script med
+kommandoen :
+
+list lformat "addfile %p%n %n <dir> %c" >ram:script
+
+Du kan så editere script fila (ram:script) og forandre/fikse kommentar osv før
+du utfører scriptet med "Execute ram:script"

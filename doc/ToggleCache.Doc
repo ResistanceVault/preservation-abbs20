@@ -1,0 +1,9 @@
+This small utility enables/disenables the .fl cache in abbs.
+
+With cache enabled, you will notice a big speed improvementon searching,
+but it will cost memroy. 5000 files in the .fl files will take around 530kb of
+memory for the cache.
+
+An added bonus is that if you have cache enabled and exits abbs in a normal
+way, the .fl files will be packed (old files is removed) for free.
+

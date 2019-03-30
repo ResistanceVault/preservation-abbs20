@@ -1,0 +1,302 @@
+ABBS Arexx documentation 13/07-95
+
+*NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE*
+
+*ALL* commands may now return an error of 20 if carrier is lost. The Arexx
+program must exit imidiatly and return control to abbs.
+
+*NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE* *NOTE*
+
+RC = 0 means OK, anyting else is an error. High values mean severe errors
+
+To get anything in the RESULT variable, you need to set
+"options results" before the command you want to get input from.
+This line is usually placed at the top of the script file.
+(You only need it once)
+
+if RC != 0, the RESULT variable is NOT filled in.
+
+Port name : "ABBS node #x port" where x is node nr.
+for node 1 : "ABBS node #1 port"
+
+Note!!
+******
+
+If one of the input functions returns a value meaning carrier lost, user
+thrown out etc, the arexx program has to exit immediatly !!
+
+
+
+Command		Parameters	Explanation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+BBSNAME				Returns the BBS name
+					RC = 20, carrier lost, out of time etc
+
+BREAKOUTIMAGE			Outputs write buffer without newline.
+					RC = 20, carrier lost, out of time etc
+
+EJECT				Ejects user on node.
+					RC = 5, no user on node
+
+FILEINFO			Return a string with some file info for the user.
+				<downloads> <uploadds> <kb dl'ed> <kb ul'ed>
+				eg: "34 13 6736 1243"
+					RC = 5, no active user
+
+GETCONSTAT			Get present/last line condition status.
+				RC = 20, carrier lost, out of time etc
+				Returns: <baud> <error correction>
+					baud == 0, means local connection
+				Possible error correction strings:
+					None,MNP,42BIS,NULL
+				(NULL = Nullmodem)
+
+GETLINE		<max length>	input a line of max length characters or less.
+					RC = 20, carrier lost, out of time etc
+					Anyway, user is going away.
+					RC = 10, missing parameter
+					Returns a null terminated string in
+					RESULT
+
+GETNEXTPARAM			Read the next parameter from "command line".
+				This is intended for Misc scripts.
+					RC = 20, carrier lost, out of time etc
+					Anyway, user is going away.
+					RC = 5, No user online
+					RC = 1, No more parameters
+					Returns a null terminated string in
+					RESULT
+
+LISTEN				Makes the node start to listen to the serial
+				port again, after an UNLISTEN command.
+					RC = 10, not a serial node.
+
+MAYGETCHAR			input a character if one is availible
+					RC = 20, carrier lost, out of time etc
+					Anyway, user is going away.
+					RC = 1, no character was availible
+					The caracter is placed in the RESULT
+					variable
+
+MORE				turns more-prompts back on again (sets to a new page until more)
+					RC = 20, carrier lost, out of time etc
+
+NODENUMBER			results the node nr
+					RC = 20, carrier lost, out of time etc
+
+NOMORE				turns off more-prompts until next getline
+					RC = 20, carrier lost, out of time etc
+
+OUTIMAGE			Outputs write buffer with newline.
+					RC = 20, carrier lost, out of time etc
+					RC = 1, user typed no to a more prompt
+					RC = 0, Quick mode not in use
+
+QUICK				Return quick status
+					RC = 20, carrier lost, out of time etc
+					RC = 5, no user on node
+					RC = 1, Quick mode in use
+					RC = 0, Quick mode not in use
+
+RAW		[OFF]		disables ABBS's parsing of incoming characters.
+				readchar will now return controll characters etc.
+				giving the OFF parameter restores abbs to normal
+					RC = 20, carrier lost, out of time etc
+
+READBITS	[username]	Read userbits in News conference for current user
+					(if no username), or for a spesific user.
+					RC = 20, Setup error
+					RC = 10, User not found
+					RC = 5, no user on node
+					Returns a null terminated string in
+					RESULT with the bits. Example: "RUDF"
+
+READCHAR			input a character.
+					RC = 20, carrier lost, out of time etc
+					Anyway, user is going away.
+					The caracter is placed in the RESULT
+					variable
+
+READUSERSETUP			Reads the usersetup for the current user.
+				returns the <magic number> in result.
+				See USERSETUP for the description for the
+				magic number.
+					RC = 5, no user on node
+
+RESUME				Resume from suspend.
+					RC = 20, carrier lost, out of time etc
+					RC = 10, Failed to resume
+					RC = 5, not in suspend mode
+
+SETBITS		<bits> [username]
+				Sets userbits in News conference for current user
+					(if no username), or for a spesific user.
+					RC = 20, Setup error
+					RC = 15, Unknown bits
+					RC = 11, Missing parameter
+					RC = 10, User not found
+					RC = 5, no user on node
+				Only "RWDUFS" bits are allowed. Z and I is
+				ignored (and preserved)
+
+SETLOGINSCRIPT	<SCRIPTNAME> [USER]
+				Changes the personal login script for the
+				current user (if no user is spesified), or
+				the specified user, to the given script.
+				Note: The script name can only be 13 characters
+				long..
+					RC = 20, carrier lost, out of time etc
+					RC = 15, Error loading/saving user.
+					RC = 10, No parameters given/
+						wrong parameter
+			 		RC = 5, no user online.
+
+SETSTATUSTEXT	[TEXT]		Changes this nodes status text to the specified
+				text (max 23 characters). If no text parameter
+				is specified, the statustext is
+				"undone"/removed
+					RC = 20, carrier lost, out of time etc
+
+SHUTDOWN	[NOBUSY]	Quit node. NOBUSY, leaves the modem on hook
+					RC = 20, carrier lost, out of time etc
+			 		RC = 5, user online, will quit after
+						logout
+
+SIGOP				Check if user has atleast sigopaccess
+					RC = 20, carrier lost, out of time etc
+		 			RC = 5, no user online, can't.
+					RC = 1, Yes, this user has sigop (or sysop) access
+					RC = 0, does not have sigop access
+
+SUSPEND		[NOBUSY]	Releases serial port. NOBUSY, leaves the modem
+				on hook
+					RC = 20, carrier lost, out of time etc
+		 			RC = 5, user online, can't.
+					RC = 10, not a serial node!
+
+SYSOP				Check if user has sysop acces
+					RC = 20, carrier lost, out of time etc
+		 			RC = 5, no user online, can't.
+					RC = 1,  Yes, this user has sysop access
+					RC = 0, does not have sysop access
+
+SYSOPNAME			Returns the Sysops name
+					RC = 20, carrier lost, out of time etc
+
+TIMELEFT			returns time left for user
+					RC = 20, carrier lost, out of time etc
+		 			RC = 5, no user online, can't.
+
+TYPEFILE	<filename>	Types a file.
+					RC = 20, carrier lost, out of time etc
+					RC = 10, missing parameter
+					RC = 1,  User stoped typing
+
+UNLISTEN			Makes the node stop monitoring the serial port.
+					RC = 10, not a serial node.
+		 			RC = 5, user online, can't.
+
+UNREAD				returns number of unread messages in News for user
+					RC = 20, carrier lost, out of time etc
+					RC = 5, no active user
+
+USERINFO			Return a string with some userinfo.
+				<timeson> <msgs entered> <msgs read>
+				<msgs dumped> <userinfomsgnr>
+				eg: "100 234 45 740 132"
+					RC = 20, carrier lost, out of time etc
+					RC = 5, no active user
+				note: userinfomsgnr is 0 for no userinfomsg
+
+USERNAME			Return name of user on node.
+					RC = 20, carrier lost, out of time etc
+					RC = 5, no active user
+
+USERSETUP	<magic number>	*NOTE* this Arexx command is only callable from
+				the newuser arexx script. The majic(!) number
+				is a 32bit value composed this way :
+				bits 29-32: Presently unused (set to 0!!)
+				bits 24-28: Charset number
+						(0 = ISO, 1 = IBM, 2 = IBN,
+						 3 = US7, 4 = UK7, 5 = GE7,
+						 6 = FR7, 7 = SF7, 8 = NO7,
+						 9 = DE7, 10 = SP7, 11 = IT7,
+						 12 = MAC)
+				bits 16-23: pagelength	(0 = unlimited)
+				bits 12-15: scratchpadformat
+						(0 = text, 1 = arc, 2 = lzh,
+						 3 = zip, 4 = lha, 5 = arj,
+						 6 = Zoo, 7 = Lzx)
+				bits 8-11:  Transferprotocol number
+						(0 = none, 1 = zmodem,
+						 2 = xmodem, 3 = xmodem-CRC,
+						 4 = ymodem, 5 = ymodembatch,
+						 6 = ymodemG)
+				bit 7 : ReadRef/Read
+				bit 6 : Raw files
+				bit 5 : Clear screen before messages
+				bit 4 : ANSI terminal
+				bit 3 : Use G&R protocol
+				bit 2 : Want Color in messages
+				bit 1 : Use Ansi mens
+				bit 0 : Use FSE
+
+				Puh.. That's cryptic ? :-) Here's an Example :
+
+				Usersetup X2D('021b415f',8) will give you
+
+				* IBN charset
+				* $1b = 27 lines pr page
+				* LHA scratchpad format
+				* Zmodem transfer protocol
+				* ReadRef
+				* No raw files
+				* No clearscreen
+				* ANSI terminal
+				* Use G&R
+				* Color in messages
+				* Ansi menues
+				* FSE
+
+					RC = 20, carrier lost, out of time etc
+					RC = 10, missing parameter
+					RC = 5, not in newuser
+
+
+WRITECHAR	<char>		Write character to write buffer
+					RC = 20, carrier lost, out of time etc
+					RC = 10, missing parameter
+
+WRITETEXT	<text>		Write text to write buffer.
+					RC = 20, carrier lost, out of time etc
+					RC = 10, missing parameter
+
+******************************************************************************
+
+Main program
+============
+
+RC = 0 means OK, anyting else is an error. High values mean severe errors
+
+To get anything in the RESULT variable, you need to set
+"options results" before the command you want to get input from.
+This line is usually placed at the top of the script file.
+
+if RC != 0, the RESULT variable is NOT filled in.
+
+Port name : "ABBS mainport"
+
+Command		Parameters	Explanation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+SHOWGUI		[OFF]		Opens (or closes if OFF is specified) the
+				BBS gui
+
+SHUTDOWN			Quit BBS.
+			 		RC = 5, Nodes not down yet
+
+STARTNODE     <config filename>	Starts up a new node.
+					RC = 10, missing parameter
+					RC = 5, couldn't start node
+

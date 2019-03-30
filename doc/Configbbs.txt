@@ -1,0 +1,47 @@
+security
+BOOL	Nekte super sysop å logge inn eksternt
+BOOL	Nekte sysop å logge inn eksternt
+BOOL	All upload privat,uploads private to sysop
+BOOL	lukket system - passord for å registrere seg
+PASSWD	passord for sysop menyen for eksterne brukere
+PASSWD	ClosedPassword
+PASSWD	dosPassword
+STRING	systemfiler-dirs (userfiles/#?)
+INT	Log level
+
+BOOL	read ref default
+BOOL	Sysop availible fra startup ?
+BOOL	flcache on/off
+STRING	internet addresse felt (256 bytes)
+STRING	Skjerm gui'et skal åpne på
+STRING	font til gui'et.
+BOOL	Skal GUI'et åpnes ved start ?
+UWORD	GUI x,y pos
+
+INT	Maxconferences
+INT	MaxfileDirs
+STRING	BaseName
+STRING	SYSOPname
+PASSWD	SYSOPpassword
+INT	MaxLinesMessage
+INT	NewUserTimeLimit
+INT	NewUserFileLimit
+INT	SleepTime
+UBYTE	DefaultCharSet
+UBYTE	Cflags (Lace,8Col,Download,Upload,Byteratio,Fileratio,AllowTmpSysop,UseASL)
+INT	ByteRatiov
+INT	FileRatiov
+INT	MinULSpace
+UBYTE	Cflags2 (NoGet,CacheFL)
+
+(filedirs)
+n_DirName
+n_DirPaths
+n_FileOrder
+n_PrivToConf
+
+(conferences)
+n_ConfName
+n_ConfOrder
+n_ConfSW
+n_ConfMaxScan

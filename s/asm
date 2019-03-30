@@ -1,0 +1,12 @@
+.key para
+
+failat 1
+date >t:date
+IF not "<para>" EQ ""
+gen <para>
+copy Node.asm ram:Node.asm
+Programs:prog/sc/c/smake ABBSsn
+ELSE
+gen 13
+Programs:prog/sc/c/smake
+ENDIF

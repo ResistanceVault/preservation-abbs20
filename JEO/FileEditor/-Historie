@@ -1,0 +1,46 @@
+                          Historie for FileEditor
+
+v0.17a - Fixa bug når FE avslutta dersom ABBS ikke var oppe.
+
+v0.17  - Fixa bug under automatisk innstallering av filer. Når comment var 0
+         så ble comment til en " i steden for standardteksten.
+         Gjort litt om på teksten i menyen...
+         Dersom FE erstatter en gammel fil så husker legger den til antall
+         downloads fra den gamle fila til den nye.
+
+         Nå kan du legge filer privat til konferansen ved å gjøre følgende:
+         Du må ha en filskuff som heter det samme som konferanse. Kommer 
+         til å gjøre om dette slik at man kan velge konferense. Så må du 
+         legge disse filene iden skuffen (f eks FE:ABBS/Sysop) og så velge
+         'Auto innstaller' fra menyen. FE vil da spørre om du vil legge
+         filene privat til den aktuelle konferansen. Dersom det har kommet
+         noen filer på avveie som ikke skulle privat til konfen, så kan du 
+         ta bort dette ved å gå inn på 'Redigere fil' og trykke på 'Slett
+         konf'
+
+v0.16g - Fixa bug: Det var ikke alltid FE fant alle kriteriene i readme-
+         fila. F eks. 'Type: bla/bla' var den som uteble oftest...
+         Nå funker 'Make comment'. Denne funksjonen henter inn en fillista
+         fra f eks ABBS Support ;) og erstatter filkommentarene på din base
+         dersom de ikke er satt...
+
+v0.16f - Når FE nå finner en fil som er forskjellig størrelse MEN som ligger
+         i samme dir som der den fant fila, vil FE nå bare oppdatere
+         størrelsen automatisk i ABBS uten å spørre... Dette er fordi at det
+         er noen uploadscript som legger til tekstfiler ol i fila etter at
+         den har blitt uppa, slik at størrelsen blir forskjellig fra den som
+         ligger på disken.
+
+v0.16a/d - Glemt og skrive opp, men jeg husker at jeg lagde et norsk locale
+           vaffal..
+
+v0.16  - Lagt til update i directories menyen. Forandre på Edit path til
+         Change path.
+       - Nå kan man ikke opprette flere dirs med samme navn!
+       - Kan nå delete directories.
+       - Lagt til at FE nå skriver automatisk inn fildirret ved opprettelse
+         av nytt directory ved innstalering av filer. Hovedpathen er F1:
+       - Lagt til en funksjon hvor man kan scanne alle dirs i ABBS og flytte
+         evt slette filer som ikke er innstaller. (Ikke PRIVATE og UPLOAD)
+       - Nå kan man også velge den bruker som skal ha credit for uploads.
+         FE spør ved oppstart (Sysop som default)

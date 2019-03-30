@@ -1,0 +1,17 @@
+CheckIndex v 2.0 (Formely CheckUsers)
+
+*NOTE*
+
+ABBS must not be running. Running CheckIndex when abbs is running has
+no effect.
+
+*NOTE*
+
+Template: USER,INDEX,NRINDEX,CONFIG
+Usage : [USER=<userfile>] [INDEX=<indexfile>] [NRINDEX=<nrindexfile>]
+	[CONFIG=<configfile>]
+
+Checks the index files for mistakes. 
+FixIndex should be able to fix most mistakes reported by CheckIndex.
+
+Geir Inge Høsteng.
